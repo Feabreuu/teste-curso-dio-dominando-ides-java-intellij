@@ -2,6 +2,8 @@ package br.com.dio;
 
 import br.com.dio.model.Gato;
 
+import java.util.Objects;
+
 public class PrimeiroProgramajavafe {
     public static void main(String[] args) {
         Gato gato = new Gato();
@@ -50,5 +52,18 @@ class Livro {
                 "nome='" + nome + '\'' +
                 ", numPaginas=" + numPaginas +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Livro livro = (Livro) o;
+        return Objects.equals(nome, livro.nome) && Objects.equals(numPaginas, livro.numPaginas);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nome, numPaginas);
     }
 }
